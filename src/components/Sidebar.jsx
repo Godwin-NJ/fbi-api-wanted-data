@@ -2,11 +2,14 @@ import React, { Fragment } from "react";
 import styled from "styled-components";
 import { AiOutlineClose } from "react-icons/ai";
 import { SideBarNav } from "../Local-Data/SideBarNav";
+import { useGlobalContext } from "../Context";
 const Sidebar = () => {
+  const { isSideBarOpen, closeSideBar } = useGlobalContext();
+  // console.log(isSideBarOpen);
   return (
     <Fragment>
-      <SideBarWrapper>
-        <CloseIcon onClick={() => console.log("close btn")}>
+      <SideBarWrapper isSideBarOpen={isSideBarOpen}>
+        <CloseIcon onClick={() => closeSideBar()}>
           <AiOutlineClose />
         </CloseIcon>
         <nav>
@@ -36,14 +39,24 @@ const SideBarWrapper = styled.aside`
   background-color: #3a3a86;
   /* overflow: auto; */
   overflow-y: auto;
+  transition: all 0.5s ease;
+  transform: ${(props) =>
+    props.isSideBarOpen ? "translate(0)" : "translate(-100%)"};
+  visibility: ${(props) => (props.isSideBarOpen ? "visible" : "hidden")};
+  /* transform: translate(-100%); */
+  /* visibility: hidden; */
 `;
 
 const CloseIcon = styled.i`
   font-size: 40px;
   font-weight: 200;
+  color: #ffd6d6;
   position: absolute;
   right: 10px;
   cursor: pointer;
+  &:hover {
+    color: #bd2f2f;
+  }
   /* margin-bottom: 10px; */
 `;
 

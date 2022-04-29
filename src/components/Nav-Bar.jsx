@@ -4,12 +4,14 @@ import { AiFillFacebook } from "react-icons/ai";
 import { BsEnvelope, BsTwitter } from "react-icons/bs";
 import { ImYoutube2 } from "react-icons/im";
 import styled from "styled-components";
+import { useGlobalContext } from "../Context";
 
 const NavBar = () => {
+  const { openSideBar } = useGlobalContext();
   return (
     <Fragment>
       <NavigationWrapper>
-        <IconWrapper>
+        <IconWrapper onClick={() => openSideBar()}>
           <h5>
             <IconFont>More</IconFont>
           </h5>
@@ -72,6 +74,7 @@ const IconFont = styled.span`
 `;
 const IconPadding = styled.span`
   margin: 5px;
+  font-size: 25px;
 `;
 const NavTOBottom = styled.div`
   position: absolute;
@@ -95,6 +98,7 @@ const NavigationWrapper = styled.nav`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  cursor: pointer;
   /* border: 3px solid red; */
 `;
 
