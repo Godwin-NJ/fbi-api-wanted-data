@@ -4,14 +4,15 @@ import { AiFillFacebook } from "react-icons/ai";
 import { BsEnvelope, BsTwitter } from "react-icons/bs";
 import { ImYoutube2 } from "react-icons/im";
 import styled from "styled-components";
-import { useGlobalContext } from "../Context";
+import { useDispatch } from "react-redux";
+import { openSideBar } from "../features/Navigation/sideNavSlice";
 
 const NavBar = () => {
-  const { openSideBar } = useGlobalContext();
+  const dispatch = useDispatch();
   return (
     <Fragment>
       <NavigationWrapper>
-        <IconWrapper onClick={() => openSideBar()}>
+        <IconWrapper onClick={() => dispatch(openSideBar())}>
           <h5>
             <IconFont>More</IconFont>
           </h5>

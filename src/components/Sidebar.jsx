@@ -2,14 +2,15 @@ import React, { Fragment } from "react";
 import styled from "styled-components";
 import { AiOutlineClose } from "react-icons/ai";
 import { SideBarNav } from "../Local-Data/SideBarNav";
-import { useGlobalContext } from "../Context";
+import { useSelector, useDispatch } from "react-redux";
+import { closeSideBar } from "../features/Navigation/sideNavSlice";
 const Sidebar = () => {
-  const { isSideBarOpen, closeSideBar } = useGlobalContext();
-  // console.log(isSideBarOpen);
+  const dispatch = useDispatch();
+  const isSideBarOpen = useSelector((state) => state.sideNav.sidebar);
   return (
     <Fragment>
       <SideBarWrapper isSideBarOpen={isSideBarOpen}>
-        <CloseIcon onClick={() => closeSideBar()}>
+        <CloseIcon onClick={() => dispatch(closeSideBar())}>
           <AiOutlineClose />
         </CloseIcon>
         <nav>
