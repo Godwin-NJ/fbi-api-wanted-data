@@ -4,6 +4,8 @@ import { AiOutlineClose } from "react-icons/ai";
 import { SideBarNav } from "../Local-Data/SideBarNav";
 import { useSelector, useDispatch } from "react-redux";
 import { closeSideBar } from "../features/Navigation/sideNavSlice";
+import { NavLink } from "react-router-dom";
+
 const Sidebar = () => {
   const dispatch = useDispatch();
   const isSideBarOpen = useSelector((state) => state.sideNav.sidebar);
@@ -16,11 +18,16 @@ const Sidebar = () => {
         <nav>
           <ul style={{ marginTop: "40px" }}>
             {SideBarNav.map((nav) => {
-              const { id, Name } = nav;
+              const { id, Name, path } = nav;
               return (
-                <li key={id}>
+                <NavLink
+                  className="linkColor"
+                  to={`${path}`}
+                  key={id}
+                  onClick={() => dispatch(closeSideBar())}
+                >
                   <ListStyle>{Name}</ListStyle>
-                </li>
+                </NavLink>
               );
             })}
           </ul>
@@ -46,6 +53,11 @@ const SideBarWrapper = styled.aside`
   visibility: ${(props) => (props.isSideBarOpen ? "visible" : "hidden")};
   /* transform: translate(-100%); */
   /* visibility: hidden; */
+
+  .linkColor {
+    text-decoration: none;
+    color: #daebff;
+  }
 `;
 
 const CloseIcon = styled.i`
