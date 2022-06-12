@@ -30,7 +30,7 @@ const Home = () => {
   };
 
   if (isLoading) {
-    return <h2>API is loading</h2>;
+    return <div className="loader"></div>;
   }
 
   return (
@@ -101,6 +101,7 @@ const Wrapper = styled.section`
   h5 {
     font-size: large;
   }
+
   footer {
     /* border: 1px solid black; */
     padding: 5px;
@@ -117,10 +118,10 @@ const Wrapper = styled.section`
       transition: rotate 1s; */
     }
     @keyframes slant {
-      from {
+      0% {
         transform: rotate(2deg);
       }
-      to {
+      100% {
         transform: rotate(2deg);
       }
     }

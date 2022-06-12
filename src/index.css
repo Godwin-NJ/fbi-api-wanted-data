@@ -10,6 +10,22 @@ ul {
   padding: 0;
 }
 
+.loader {
+  border: 5px solid rgb(187, 249, 255);
+
+  width: 100px;
+  height: 100px;
+  margin: 100px auto;
+  border-radius: 50px;
+  border-top-color: #3a3a86;
+  animation: loadSpin 2s linear infinite;
+}
+@keyframes loadSpin {
+  0% {
+    transform: rotate(360deg);
+  }
+}
+
 /* make this exclusive to the sidebar scroll  */
 ::-webkit-scrollbar {
   color: #3a3a86;
